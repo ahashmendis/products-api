@@ -1,3 +1,4 @@
+
 package uk.ac.westminster.products_api;
 
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,10 +10,6 @@ public class ProductController {
 
     @GetMapping("/products/{id}")
     public Product getProduct(@PathVariable int id) {
-        Product product = new Product();
-        product.id = id;
-        product.name = "Laptop";
-        product.price = 999.99;
-        return product;
+        return new Product(id, "Laptop", 999.99);
     }
 }
