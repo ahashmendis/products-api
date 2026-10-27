@@ -21,7 +21,8 @@ public class ProductController {
         return productService.getProductById(id).orElse(null);
     }
     @PostMapping("/products")
-    public Product addProduct(@RequestBody Product product) {
+    public Product addProduct(@RequestBody DigitalProduct product) {
+        // Product is abstract, so the request must use a concrete subclass.
         return productService.addProduct(product);
     }
 
@@ -34,6 +35,11 @@ public class ProductController {
     @GetMapping("/products/search")
     public List<Product> search(@RequestParam String name) {
         return productService.findByName(name);
+    }
+
+    @GetMapping("/products/summaries")
+    public List<String> getSummaries() {
+        return productService.getAllSummaries();
     }
 
 }
